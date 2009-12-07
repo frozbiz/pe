@@ -48,4 +48,6 @@ for prime in sieve:
 
 end_time = time()
 
+print truncs
+print sum(truncs)
 print "Took", end_time-start_time, "seconds."
