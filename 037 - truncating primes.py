@@ -1,12 +1,13 @@
 from time import time
 
 from array import array
+from math import sqrt, ceil
 
 start_time = time()
 
 # find a bunch of primes
 N = 1000000
-sqrt_N = 1000
+sqrt_N = int(ceil(sqrt(N)))
 sieve = set(xrange(2,N))
 
 def isPrime(x):
@@ -15,7 +16,7 @@ def isPrime(x):
 for i in xrange(2,sqrt_N + 1):
     if (not isPrime(i)):
         continue
-    sieve.difference_update(xrange(i*2, N, i))
+    sieve.difference_update(xrange(i*i, N, i))
 
 def isTruncatable_right(x):
     if not isPrime(x):
