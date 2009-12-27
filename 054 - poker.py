@@ -100,6 +100,29 @@ for pair in test_hands:
     else:
         print "You screwed up!"
 
+
+hands = open("poker.txt")
+all_hands = []
+card_names = "23456789TJQKA"
+card_suits = "CDHS"
+for line in hands:
+    cards = []
+    for card in line.split():
+        val = card_names.index(card[0]) + 2
+        suit = card_suits.index(card[1])
+        cards.append((val,suit))
+    all_hands.append((tuple(cards[:5]), tuple(cards[5:])))
+
+count = 0
+for pair in all_hands:
+    if score(pair[0]) > score(pair[1]):
+        count += 1
+    elif score(pair[0]) < score(pair[1]):
+        pass
+    else:
+        print "You screwed up!"
+
+
 end_time = time()
 
 print "Took", end_time-start_time, "seconds."
