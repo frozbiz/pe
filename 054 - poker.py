@@ -90,16 +90,16 @@ test_hands = [(((5,HEARTS),(5,CLUBS),(6,SPADES),(7,SPADES),(KING,DIAMONDS)),
               (((2,H),(2,D),(4,C),(4,D),(4,S)),
                ((3,C),(3,D),(3,S),(9,S),(9,D)))]
 
-
-for pair in test_hands:
-    print score(pair[0]), score(pair[1])
-    if score(pair[0]) > score(pair[1]):
-        print "Player 1 wins"
-    elif score(pair[0]) < score(pair[1]):
-        print "Player 2 wins"
-    else:
-        print "You screwed up!"
-
+##
+##for pair in test_hands:
+##    print score(pair[0]), score(pair[1])
+##    if score(pair[0]) > score(pair[1]):
+##        print "Player 1 wins"
+##    elif score(pair[0]) < score(pair[1]):
+##        print "Player 2 wins"
+##    else:
+##        print "You screwed up!"
+##
 
 hands = open("poker.txt")
 all_hands = []
