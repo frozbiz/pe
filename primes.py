@@ -15,6 +15,18 @@ class PrimeSieve:
         assert(x <= self.N)
         return x in self.__sieve
 
+    def isPrimeExt(self, x):
+        assert(x <= self.N ** 2)
+        if (x <= self.N):
+            return x in self.__sieve
+        else:
+            for prime in self.primes:
+                if (prime ** 2 > x):
+                    return True
+                if (x % prime == 0):
+                    return False
+            return True
+
     def __getattr__(self, attr):
         if (attr == "primes"):
             # since this is only called if the attribute is not found, we can
