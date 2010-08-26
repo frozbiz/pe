@@ -129,35 +129,35 @@ circ_buffer = [(tri_set, tri_beg, tri_end, 3),
                (sept_set, sept_beg, sept_end, 7),
                (oct_set, oct_beg, oct_end, 8)]
 l = len(circ_buffer)
-# as long as we're making progress removing things, keep going ... where's my do
-# while??
-bChanged = True
-while bChanged:
-    bChanged = False
-    for i in xrange(l):
-        # Remove all the numbers that don't start with an end from any other set
-        all_ends = reduce(lambda x,y: x|y,
-                          (circ_buffer[n][END] for n in (range(i) +
-                                                         range(i+1,l))))
-        rejs = set(circ_buffer[i][BEG]) - all_ends
-        if not rejs:
-            continue
-        print "%d:" % i, rejs
-        for rej in rejs:
-            for n in circ_buffer[i][BEG][rej]:
-                circ_buffer[i][SET].discard(n)
-
-        # Rebuild the dictionaries
-        (beg, end) = dictsFromSet(circ_buffer[i][SET])
-        circ_buffer[i][BEG].clear()
-        circ_buffer[i][BEG].update(beg)
-        if (circ_buffer[i][END] != end):
-            if ((circ_buffer[i][END] - end) - all_ends):
-                print "Mark"
-                bChanged = True
-            circ_buffer[i][END].clear()
-            circ_buffer[i][END].update(end)
-
+### as long as we're making progress removing things, keep going ... where's my do
+### while??
+##bChanged = True
+##while bChanged:
+##    bChanged = False
+##    for i in xrange(l):
+##        # Remove all the numbers that don't start with an end from any other set
+##        all_ends = reduce(lambda x,y: x|y,
+##                          (circ_buffer[n][END] for n in (range(i) +
+##                                                         range(i+1,l))))
+##        rejs = set(circ_buffer[i][BEG]) - all_ends
+##        if not rejs:
+##            continue
+##        print "%d:" % i, rejs
+##        for rej in rejs:
+##            for n in circ_buffer[i][BEG][rej]:
+##                circ_buffer[i][SET].discard(n)
+##
+##        # Rebuild the dictionaries
+##        (beg, end) = dictsFromSet(circ_buffer[i][SET])
+##        circ_buffer[i][BEG].clear()
+##        circ_buffer[i][BEG].update(beg)
+##        if (circ_buffer[i][END] != end):
+##            if ((circ_buffer[i][END] - end) - all_ends):
+##                print "Mark"
+##                bChanged = True
+##            circ_buffer[i][END].clear()
+##            circ_buffer[i][END].update(end)
+##
 all_ans = []
 for candidate in circ_buffer[0][SET]:
     beg = candidate / 100
