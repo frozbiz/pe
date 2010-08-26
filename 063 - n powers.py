@@ -17,4 +17,4 @@ end_time = time()
 
 print ans
 
-print "Took", end_time-start_time, "seconds."
+print "Took", (end_time-start_time) * 1000.0, "ms."
